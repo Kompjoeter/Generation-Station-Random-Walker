@@ -15,7 +15,7 @@ function setup()
         let color = Math.floor(Math.random() * 255) + 55;
         let cellSize = Math.ceil(Math.random() * 4) * 4;
         let steps = Math.floor(Math.random() * (4000 / cellSize) + 10);
-        myPaths.push (Snake.initialize(cellSize,canvasWidth-cellSize,cellSize,canvasHeight-cellSize,cellSize,steps,4,color));
+        myPaths.push (Drunk.initialize(canvasWidth,canvasHeight,cellSize,steps,4,color));
     }
 }
 
@@ -27,6 +27,6 @@ function draw()
     //Define your drawing variables+functions here:
     for(let i = 0; i < pathsAmount; i++)
     {
-        Snake.drawAnimate(i,myPaths[i].color);
+        Drunk.drawAnimate(i,myPaths[i].color);
     }
 }
