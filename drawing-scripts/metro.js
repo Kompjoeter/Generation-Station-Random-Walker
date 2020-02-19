@@ -1,4 +1,3 @@
-//Call this function in 'sketch.js > setup()'
 var Metro = {
     
     //Create empty array for counters and countersIncrement to be used for animation
@@ -24,7 +23,7 @@ var Metro = {
         //Generate a path for X amount of steps
         for(let i = 0; i < path.steps-1; i++)
         {
-            goal = getGoal(1,path.gridWidth-1,1,path.gridHeight-1,path.dirAmount,path.path[i][0],path.path[i][1]);
+            goal = Walker.getGoal(1,path.gridWidth-1,1,path.gridHeight-1,path.dirAmount,path.path[i][0],path.path[i][1]);
             path.path[i+1][0] = goal[0];
             path.path[i+1][1] = goal[1];
         }
@@ -47,7 +46,7 @@ var Metro = {
         noLoop();
     },
 
-    //Call this "function" in 'sketch.js > draw()'
+    //Call this function in 'sketch.js > draw()'
     drawAnimate: function(path, color) 
         {
             let p = path;
@@ -69,7 +68,7 @@ var Metro = {
                 //Regenerate current path (Create new coordinates with same stepSize)
                 for(let i = 0; i < myPaths[p].steps-1; i++)
                 {
-                    goal = getGoal(1,myPaths[p].gridWidth-1,1,myPaths[p].gridHeight-1,myPaths[p].dirAmount,myPaths[p].path[i][0],myPaths[p].path[i][1]);
+                    goal = Walker.getGoal(1,myPaths[p].gridWidth-1,1,myPaths[p].gridHeight-1,myPaths[p].dirAmount,myPaths[p].path[i][0],myPaths[p].path[i][1]);
                     myPaths[p].path[i+1][0] = goal[0];
                     myPaths[p].path[i+1][1] = goal[1];
                 }
