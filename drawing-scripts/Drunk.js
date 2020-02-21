@@ -4,10 +4,10 @@ var Drunk = {
     counters: new Array(),
 
     //Call this function in 'sketch.js > setup'
-    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color)
+    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
     {
         //Create new path and add it to the end of myPaths[]
-        let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color);
+        let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
 
         //Create new (animation) counter and add it to the end of counters[]
         this.counters.push (0);
@@ -20,7 +20,7 @@ var Drunk = {
         //Generate a path for X amount of steps
         for(let i = 0; i < path.steps-1; i++)
         {
-            goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.path[i][0],path.path[i][1],path.cellSize);
+            goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.onlyDiag,path.path[i][0],path.path[i][1],path.cellSize);
             path.path[i+1][0] = goal[0];
             path.path[i+1][1] = goal[1];
         }
@@ -63,6 +63,7 @@ var Drunk = {
         };
     },
 
+    //Debugging tool: Draws drawing-bounds to canvas.
     drawBounds: function(path, color)
     {
         stroke(color);

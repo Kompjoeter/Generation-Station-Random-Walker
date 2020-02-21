@@ -1,10 +1,10 @@
 var Snake =
 {
     //Call this function in 'sketch.js > setup'
-    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color)
+    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
     {
         //Create new path and add it to the end of myPaths[]
-        let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color);
+        let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
 
         //Set Origin Coordinates for path
         path.path[0][0] = Math.floor(Math.random() * (path.boundsMaxX - path.boundsMinX)) + path.boundsMinX;
@@ -14,7 +14,7 @@ var Snake =
         let goal = new Array(2);
         for(let i = 0; i < path.steps-1; i++)
         {
-        goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.path[i][0],path.path[i][1],path.cellSize);
+            goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.onlyDiag,path.path[i][0],path.path[i][1],path.cellSize);
             path.path[i+1][0] = goal[0];
             path.path[i+1][1] = goal[1];
         }
@@ -60,11 +60,13 @@ var Snake =
         }
         
         //Generate new goal/coordinates for last Array index AKA 'head-of-snake'
-        let goal = Walker.getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].path[myPaths[p].steps-1][0],myPaths[p].path[myPaths[p].steps-1][1],myPaths[p].cellSize);        
+        let goal = Walker.getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].onlyDiag,myPaths[p].path[myPaths[p].steps-1][0],myPaths[p].path[myPaths[p].steps-1][1],myPaths[p].cellSize);        
 
         myPaths[p].path[myPaths[p].steps-1][0] = goal[0];
         myPaths[p].path[myPaths[p].steps-1][1] = goal[1];
     },
+
+    //Debugging tool: Draws drawing-bounds to canvas.
     drawBounds: function(path, color)
     {
         stroke(color);
