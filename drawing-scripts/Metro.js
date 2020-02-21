@@ -4,11 +4,11 @@ var Metro = {
     counters: new Array(),
     countersIncr: new Array(),
 
-    //Call this function in 'sketch.js > setup()'
-    initialize: function(width, height, cellSize, steps, dirAmount, color)
-    {
-        //Create new path and add it to the end of myPaths[]
-        let path = new Path(width, height, cellSize, steps, dirAmount, color);
+   //Call this function in 'sketch.js > setup'
+   initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color)
+   {
+       //Create new path and add it to the end of myPaths[]
+       let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color);
 
         //Create new (animation) counter and add it to the end of counters[]
         this.counters.push (0);
@@ -17,13 +17,13 @@ var Metro = {
 
         //Set Origin Coordinates for path
         let goal = new Array(2);
-        path.path[0][0] = path.gridWidth / 2;
-        path.path[0][1] = path.gridHeight / 2;
+        path.path[0][0] = path.boundsMaxX / 2;
+        path.path[0][1] = path.boundsMaxY / 2;
 
         //Generate a path for X amount of steps
         for(let i = 0; i < path.steps-1; i++)
         {
-            goal = Walker.getGoal(1,path.gridWidth-1,1,path.gridHeight-1,path.dirAmount,path.path[i][0],path.path[i][1]);
+            goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.path[i][0],path.path[i][1],path.cellSize);
             path.path[i+1][0] = goal[0];
             path.path[i+1][1] = goal[1];
         }
@@ -40,7 +40,7 @@ var Metro = {
         {
             noFill();
             stroke(color);
-            circle(myPaths[p].path[i][0]*myPaths[p].cellSize,myPaths[p].path[i][1]*myPaths[p].cellSize, myPaths[p].cellSize / 4);
+            circle(myPaths[p].path[i][0],myPaths[p].path[i][1], myPaths[p].cellSize / 4);
         }
         //Run 'sketch.js > draw()' once
         noLoop();
@@ -56,7 +56,7 @@ var Metro = {
             {
                 noFill();
                 stroke(color);
-                circle(myPaths[p].path[i][0]*myPaths[p].cellSize,myPaths[p].path[i][1]*myPaths[p].cellSize, myPaths[p].cellSize / 4);
+                circle(myPaths[p].path[i][0],myPaths[p].path[i][1], myPaths[p].cellSize / 4);
             }
 
             //If path is not-drawn
@@ -68,7 +68,7 @@ var Metro = {
                 //Regenerate current path (Create new coordinates with same stepSize)
                 for(let i = 0; i < myPaths[p].steps-1; i++)
                 {
-                    goal = Walker.getGoal(1,myPaths[p].gridWidth-1,1,myPaths[p].gridHeight-1,myPaths[p].dirAmount,myPaths[p].path[i][0],myPaths[p].path[i][1]);
+                    goal = Walker.getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].cellSize);
                     myPaths[p].path[i+1][0] = goal[0];
                     myPaths[p].path[i+1][1] = goal[1];
                 }

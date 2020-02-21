@@ -1,6 +1,6 @@
 class Path
 {
-    constructor(width, height, cellSize, steps, dirAmount, color)
+    constructor(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, color)
     {
         this.steps = steps;
 
@@ -12,8 +12,10 @@ class Path
         }
         
         this.cellSize = cellSize;
-        this.gridWidth = width / this.cellSize;
-        this.gridHeight = height / this.cellSize;
+        this.boundsMinX = boundsMinX;
+        this.boundsMaxX = boundsMaxX;
+        this.boundsMinY = boundsMinY;
+        this.boundsMaxY = boundsMaxY;
         this.dirAmount = dirAmount;
         this.color = color;
     }
@@ -26,9 +28,9 @@ var Walker =
         return Math.floor(Math.random() * dirAmount) * (360 / dirAmount);
     },
 
-    getDirXYIncr: function(dir, isX)
+    getDirXYIncr: function(dir, isX, cellSize)
     {
-        let incr = 1;
+        let incr = 0;
 
         switch(dir)
         {
@@ -40,25 +42,25 @@ var Walker =
                 }
                 else
                 {
-                    incr = -1;
+                    incr = -cellSize;
                 }
                 break;
             //Up-Right
             case 45:
                 if (isX)
                 {
-                    incr = 1;
+                    incr = cellSize;
                 }
                 else
                 {
-                    incr = -1;
+                    incr = -cellSize;
                 }
                 break;
             //Right
             case 90:
                 if (isX)
                 {
-                    incr = 1;
+                    incr = cellSize;
                 }
                 else
                 {
@@ -69,11 +71,11 @@ var Walker =
             case 135:
                 if (isX)
                 {
-                    incr = 1;
+                    incr = cellSize;
                 }
                 else
                 {
-                    incr = 1;
+                    incr = cellSize;
                 }
                 break;
             //Down
@@ -84,25 +86,25 @@ var Walker =
                 }
                 else
                 {
-                    incr = 1;
+                    incr = cellSize;
                 }
                 break;
             //Down-Left
             case 225:
                 if (isX)
                 {
-                    incr = -1;
+                    incr = -cellSize;
                 }
                 else
                 {
-                    incr = 1;
+                    incr = cellSize;
                 }
                 break;
             //Left
             case 270:
                 if (isX)
                 {
-                    incr = -1;
+                    incr = -cellSize;
                 }
                 else
                 {
@@ -113,11 +115,11 @@ var Walker =
             case 315:
                 if (isX)
                 {
-                    incr = -1;
+                    incr = -cellSize;
                 }
                 else
                 {
-                    incr = -1;
+                    incr = -cellSize;
                 }
                 break;
         }
@@ -126,7 +128,7 @@ var Walker =
 
     getGoalXY: function(incr, xYStart)
     {
-        return xYStart + (1 * incr);
+        return xYStart + (incr);
     },
 
     //xIn: should be the 'x coordinate' to check for.
@@ -145,16 +147,16 @@ var Walker =
 
     //xStart: should be the 'x coordinate' of the starting point to set a goal from.
     //yStart: should be the 'y coordinate' of the starting point to set a goal from.
-    getGoal: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, dirAmount, xStart, yStart)
+    getGoal: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, dirAmount, xStart, yStart, cellSize)
     {
         let xYGoal = new Array(2);
         let isOutOfBounds = true;
         while(isOutOfBounds == true)
         {
             let dir = this.getDirRandom(dirAmount);
-            let incr = this.getDirXYIncr(dir, true);
+            let incr = this.getDirXYIncr(dir, true, cellSize);
             xYGoal[0] = this.getGoalXY(incr, xStart);
-            incr = this.getDirXYIncr(dir, false);
+            incr = this.getDirXYIncr(dir, false, cellSize);
             xYGoal[1] = this.getGoalXY(incr, yStart );
             isOutOfBounds = this.checkBoundsXY(boundsMinX,boundsMaxX,boundsMinY, boundsMaxY,xYGoal[0], xYGoal[1]);
         }
