@@ -9,7 +9,7 @@ class Path
     //cellSize: should be a positive integer 
         //Advice: Should be a power of 2.
     //steps: should be a positive integer and the desired length of the path.
-     //dirAmount: should be '4' or '8'
+    //dirAmount: should be '4' or '8'
         //If '4' and getDirRandom is called, it returns a direction of (0,90,180 or 270)
         //If '8' and getDirRandom is called, it returns a direction of (0,45,90,135,180,225,270 or 315)
     //onlyDiag: should be 'true' or 'false'
