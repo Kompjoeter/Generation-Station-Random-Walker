@@ -6,7 +6,7 @@ var Drunk = {
     //Call this function in 'sketch.js > setup'
     initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
     {
-        //Create new path and add it to the end of myPaths[]
+        //Create new path.
         let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
 
         //Create new (animation) counter and add it to the end of counters[]
@@ -17,7 +17,7 @@ var Drunk = {
         path.path[0][0] = path.boundsMaxX / 2;
         path.path[0][1] = path.boundsMaxY / 2;
 
-        //Generate a path for X amount of steps
+        //Generate X amount of steps(coordinates) for path
         for(let i = 0; i < path.steps-1; i++)
         {
             goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.onlyDiag,path.path[i][0],path.path[i][1],path.cellSize);

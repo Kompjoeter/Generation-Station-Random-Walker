@@ -3,14 +3,14 @@ var Snake =
     //Call this function in 'sketch.js > setup'
     initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
     {
-        //Create new path and add it to the end of myPaths[]
+        //Create new path.
         let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
 
         //Set Origin Coordinates for path
         path.path[0][0] = Math.floor(Math.random() * (path.boundsMaxX - path.boundsMinX)) + path.boundsMinX;
         path.path[0][1] = Math.floor(Math.random() * (path.boundsMaxY - path.boundsMinY)) + path.boundsMinY;
 
-        //Generate a path for X amount of steps
+        //Generate X amount of steps(coordinates) for path
         let goal = new Array(2);
         for(let i = 0; i < path.steps-1; i++)
         {

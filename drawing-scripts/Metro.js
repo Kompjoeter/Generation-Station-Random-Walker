@@ -7,7 +7,7 @@ var Metro = {
    //Call this function in 'sketch.js > setup'
    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
    {
-       //Create new path and add it to the end of myPaths[]
+       //Create new path.
        let path = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
 
         //Create new (animation) counter and add it to the end of counters[]
@@ -20,7 +20,7 @@ var Metro = {
         path.path[0][0] = path.boundsMaxX / 2;
         path.path[0][1] = path.boundsMaxY / 2;
 
-        //Generate a path for X amount of steps
+        //Generate X amount of steps(coordinates) for path
         for(let i = 0; i < path.steps-1; i++)
         {
             goal = Walker.getGoal(path.boundsMinX,path.boundsMaxX,path.boundsMinY,path.boundsMaxY,path.dirAmount,path.onlyDiag,path.path[i][0],path.path[i][1],path.cellSize);
@@ -65,7 +65,7 @@ var Metro = {
             //Set new color to current path
             myPaths[p].color = Math.floor(Math.random() * 255) + 55;
 
-            //Regenerate current path (Create new coordinates with same stepSize)
+            //Regenerate current path (Create new coordinates with same stepSize from same Origin)
             for(let i = 0; i < myPaths[p].steps-1; i++)
             {
                 goal = Walker.getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].onlyDiag,myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].cellSize);
