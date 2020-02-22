@@ -20,8 +20,8 @@ Some of the code in the examples (The files in the 'drawing-scripts' folder) is 
     - **Snake.js** (A unique way of using 'Random Walker(s)' to draw onto a canvas)
     
 # Installation
-.1 Download all the project files in this repos.
-.2 Download the p5.js library (https://p5js.org/download/) and add it to the root-folder (Same folder as index.html). The p5.js library is already referenced in the index.html file.
+1. Download all the project files in this repository.
+2. Download the p5.js library (https://p5js.org/download/) and add it to the root-folder (Same folder as index.html). The p5.js library is already referenced in the index.html file.
 
 # Usage
 If you have no experience with p5.js I advice you to take a look at their website (https://p5js.org/get-started/) (https://p5js.org/reference/). 
@@ -34,6 +34,10 @@ In order to create your own ways of generating art, the only files you need to e
 
 To start out you could try calling any of the pre-made 'drawing-scripts' and changing a few parameters.
 When calling a 'drawing-script' draw function, make sure to either call DrawingScriptName.drawStatic or DrawingScriptName.drawAnimate.
+
+When you get a feel for how the project works, try making your own 'drawing-script'!
+
+(If this information is not relevant to you, do as you please. Make sure to check the p5.js library's license when you decide to alter its contents or/and publish your own projects/versions-of-this-project using the p5.js library.)
 
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
