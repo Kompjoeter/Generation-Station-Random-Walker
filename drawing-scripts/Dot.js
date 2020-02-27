@@ -1,7 +1,7 @@
-var Snake =
+var Dot = 
 {
     /**
-    * Initialize Snake
+    * Initialize Dot
     * @param {int} boundsMinX - The 'lowest x coordinate' allowed to draw in 
     * (Should not be lower than 0).
     * @param {int} boundsMaxX - The 'highest x coordinate' allowed to draw in 
@@ -12,7 +12,6 @@ var Snake =
     * (Should not be higher than canvas height).
     * @param {int} cellSize - The width and height of grid-cells 
     * (Should be a power of 2).
-    * @param {int} steps - The desired length (Amount of cells) of the path.
     * @param {int} dirAmount - The amount of directions to randomly choose from 
     * (Should be '4' or '8') 
     * (If '4', returns a direction of (0,90,180 or 270)), 
@@ -23,28 +22,21 @@ var Snake =
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */
     //Call this function in 'sketch.js > setup'
-    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
+    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, dirAmount, onlyDiag, color)
     {
         //Create new path.
-        let p = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
+        let p = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, 1, dirAmount, onlyDiag, color);
 
         //Set Origin Coordinates for path
+        let goal = new Array(2);
         p.path[0][0] = Math.floor(Math.random() * (p.boundsMaxX - p.boundsMinX)) + p.boundsMinX;
         p.path[0][1] = Math.floor(Math.random() * (p.boundsMaxY - p.boundsMinY)) + p.boundsMinY;
 
-        //Generate X amount of steps(coordinates) for path
-        let goal = new Array(2);
-        for(let i = 0; i < p.steps-1; i++)
-        {
-            goal = p.getGoal(p.boundsMinX,p.boundsMaxX,p.boundsMinY,p.boundsMaxY,p.dirAmount,p.onlyDiag,p.path[i][0],p.path[i][1],p.cellSize);
-            p.path[i+1][0] = goal[0];
-            p.path[i+1][1] = goal[1];
-        }
         return p;
     },
 
     /**
-    * Draw Snake fully without Animation 
+    * Draw Dot fully without Animation 
     * @param {Object} path - The path to draw. 
     * @param {Color} color - The desired color of the path's steps. 
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
@@ -53,55 +45,39 @@ var Snake =
     drawStatic: function(path,color)
     {
         let p = path;
-
+        
         //Draw current path(p) fully
-        for(let i = 0; i < myPaths[p].steps - 1; i++)
-        {
-            stroke(color);  
-            strokeWeight(myPaths[p].cellSize/4);
-            noFill();
-            square(myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].cellSize);
-        }
+        fill(color)
+        stroke(color);
+        circle(myPaths[p].path[0][0],myPaths[p].path[0][1], myPaths[p].cellSize / 4);
+        
         //Run 'sketch.js > draw()' once
         noLoop();
     },
 
     /**
-    * Draw Snake Animated (loop)
+    * Draw Dot Animated (loop)
     * @param {Object} path - The path to draw. 
     * @param {Color} color - The desired color of the path's steps. 
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
-    //Call this function in 'sketch.js > draw()'
+    //Call this function in sketch.js
     drawAnimate: function(path, color) 
     {
         let p = path;
-
-        //Draw current path(p) fully
-        for(let i = 0; i < myPaths[p].steps -1; i++)
-        {
-            stroke(color);
-            strokeWeight(myPaths[p].cellSize/4);
-            noFill();
-            square(myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].cellSize/4);
-        }
-
-        //Set coordinates of Array index to coordinates of upper Array index
-        for(let i = 0; i < myPaths[p].steps -1; i++)
-        {
-            myPaths[p].path[i][0] = myPaths[p].path[i+1][0];
-            myPaths[p].path[i][1] = myPaths[p].path[i+1][1];
-        }
         
-        //Generate new goal/coordinates for last Array index AKA 'head-of-snake'
-        let goal = myPaths[p].getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].onlyDiag,myPaths[p].path[myPaths[p].steps-1][0],myPaths[p].path[myPaths[p].steps-1][1],myPaths[p].cellSize);        
-
-        myPaths[p].path[myPaths[p].steps-1][0] = goal[0];
-        myPaths[p].path[myPaths[p].steps-1][1] = goal[1];
+        //Draw current path(p) fully
+        fill(color);
+        stroke(color);
+        circle(myPaths[p].path[0][0],myPaths[p].path[0][1], myPaths[p].cellSize / 4);
+        
+        let goal = myPaths[p].getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].onlyDiag,myPaths[p].path[0][0],myPaths[p].path[0][1],myPaths[p].cellSize);
+        myPaths[p].path[0][0] = goal[0];
+        myPaths[p].path[0][1] = goal[1];
     },
 
     /**
-    * Draw Snake Bounds  
+    * Draw Dot Bounds  
     * @param {Object} path - The path to draw bounds for.
     * @param {Color} color - The desired color of the bounds. 
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
@@ -110,7 +86,6 @@ var Snake =
     drawBounds: function(path, color)
     {
         stroke(color);
-        noFill();
         rect(myPaths[path].boundsMinX,myPaths[path].boundsMinY,myPaths[path].boundsMaxX-myPaths[path].boundsMinX,myPaths[path].boundsMaxY-myPaths[path].boundsMinY);
     }
 }
