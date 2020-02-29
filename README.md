@@ -39,6 +39,9 @@ When you get a feel for how the project works, try making your own 'drawing-scri
 
 (If this information is not relevant to you, do as you please. Make sure to check the p5.js library's license when you decide to alter its contents or/and publish your own projects/versions-of-this-project using the p5.js library.)
 
+# Contribution
+If you have made any 'drawings-scripts' yourself, feel free to add them to the ' drawings-scripts' folder through a pull request.
+
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
 
