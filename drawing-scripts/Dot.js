@@ -22,10 +22,10 @@ var Dot =
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */
     //Call this function in 'sketch.js > setup'
-    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, dirAmount, onlyDiag, color)
+    initialize: function(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color)
     {
         //Create new path.
-        let p = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, 1, dirAmount, onlyDiag, color);
+        let p = new Path(boundsMinX, boundsMaxX, boundsMinY, boundsMaxY, cellSize, steps, dirAmount, onlyDiag, color);
 
         //Set Origin Coordinates for path
         let goal = new Array(2);
@@ -42,14 +42,14 @@ var Dot =
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
-    drawStatic: function(path,color)
+    drawStatic: function(pathObject,pathIndex)
     {
-        let p = path;
+        let color = pathObject.color;
         
         //Draw current path(p) fully
         fill(color)
         stroke(color);
-        circle(myPaths[p].path[0][0],myPaths[p].path[0][1], myPaths[p].cellSize / 4);
+        circle(pathObject.path[0][0],pathObject.path[0][1], pathObject.cellSize / 4);
         
         //Run 'sketch.js > draw()' once
         noLoop();
@@ -62,18 +62,18 @@ var Dot =
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in sketch.js
-    drawAnimate: function(path, color) 
+    drawAnimate: function(pathObject, pathIndex) 
     {
-        let p = path;
+        let color = pathObject.color;
         
         //Draw current path(p) fully
         fill(color);
         stroke(color);
-        circle(myPaths[p].path[0][0],myPaths[p].path[0][1], myPaths[p].cellSize / 4);
+        circle(pathObject.path[0][0],pathObject.path[0][1], pathObject.cellSize / 4);
         
-        let goal = myPaths[p].getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].onlyDiag,myPaths[p].path[0][0],myPaths[p].path[0][1],myPaths[p].cellSize);
-        myPaths[p].path[0][0] = goal[0];
-        myPaths[p].path[0][1] = goal[1];
+        let goal = pathObject.getGoal(pathObject.boundsMinX,pathObject.boundsMaxX,pathObject.boundsMinY,pathObject.boundsMaxY,pathObject.dirAmount,pathObject.onlyDiag,pathObject.path[0][0],pathObject.path[0][1],pathObject.cellSize);
+        pathObject.path[0][0] = goal[0];
+        pathObject.path[0][1] = goal[1];
     },
 
     /**

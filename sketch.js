@@ -1,40 +1,88 @@
 //You can adjust the canvas size to your liking, but it's adviced to have it be divisible by 'cellSize'
-const canvasWidth = 1024;
-const canvasHeight = 640;
+var canvasWidth = window.innerWidth;
+var canvasHeight = window.innerHeight;;
 //Define amount of paths to be created here:
-const pathsAmount = 50;
-var myPaths = new Array();
+var myPaths;
+var c;
 
 function setup() 
-{    
-    createCanvas(canvasWidth,canvasHeight);
+{   
+    c = createCanvas(canvasWidth,canvasHeight);
+    c.id('canvas');
+    c.parent('canvas-holder');
+
+    setLogic();
+    initializeDrawMethod();
+
+}
+
+function initializeDrawMethod()
+{
+    myPaths = new Array();
+
+    //Reset Animation Counters for Drawing Method
+    window[drawingStyle].counters = [];
+    window[drawingStyle].countersIncr = [];
+
     //Define your initialize variables+functions here:
-    for(let i = 0; i < pathsAmount; i++)
+    for(let i = 0; i < walkerAmount; i++)
     {
         //Hue (0 - 360)
-        let h = Math.floor(Math.random() * 360);
+        if (hueRandomize)
+        {
+            hue = Math.floor(Math.random() * 255);
+        }
         //Saturation (Percentages)
-        let s = 15;
+        if (saturationRandomize)
+        {
+            saturation = Math.floor(Math.random() * 100);
+        }
         //Lightness (Percentages)
-        let l = Math.floor(Math.random() * 100) + 25;
-        let color = 'hsl('+h+','+s+'%,'+l+'%)';
-        //let color = Math.floor(Math.random() * 255) + 55;
-        let cellSize = Math.ceil(Math.random() * 4) * 4;
-        let steps = Math.floor(Math.random() * (4000 / cellSize) + 10);
+        if (brightnessRandomize)
+        {
+            brightness = Math.floor(Math.random() * 100);
+        }
+
+        let color = 'hsl('+hue+','+saturation+'%,'+brightness+'%)';
         
-        myPaths.push (Metro.initialize(cellSize*4,canvasWidth-(cellSize*4),cellSize*4,canvasHeight-(cellSize*4),cellSize,steps,4,false,color));
+        if (cellSizeRandomize)
+        {
+            cellSize = Math.ceil(Math.random() * 4) * 4;
+        }
+        //let cellSize = 4;
+        let steps = Math.floor(Math.random() * (stepsMultiplier / cellSize) + 10);
+        //let steps = 40;        
+        myPaths.push (window[drawingStyle].initialize(cellSize*4,canvasWidth-(cellSize*4),cellSize*4,canvasHeight-(cellSize*4),cellSize,steps,4,false,color));
     }
+
+    if (drawingAnimated)
+    {
+        loop();
+    }
+
+    redraw();
 }
 
 function draw()
-{
+{   
+    clear();
     //Feel free to change the background color:
-    background(35);
+    background(25);
 
     //Define your drawing variables+functions here:
-    for(let i = 0; i < pathsAmount; i++)
+    for(let i = 0; i < walkerAmount; i++)
     {
-        console.log(myPaths[i].color);
-        Metro.drawAnimate(i,myPaths[i].color);
+        if (drawingAnimated)
+        {   window[drawingStyle].drawAnimate(myPaths[i],i);}
+        else
+        { window[drawingStyle].drawStatic(myPaths[i],i);}
     }
+}
+
+function windowResized()
+{
+    canvasWidth = window.innerWidth;
+    canvasHeight = window.innerHeight;
+    resizeCanvas(canvasWidth,canvasHeight,true);
+    initializeDrawMethod();
 }

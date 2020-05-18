@@ -1,19 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="p5.js"></script>
-    <script src="sketch.js"></script>
-    <script src="Walker.js"></script>
+    <title>Canvas UI</title>
+    <link rel="stylesheet" type="text/css" href="main-aesthetic.css">
+    <link rel="stylesheet" type="text/css" href="main-spatial.css">
+    <script src="drawing-scripts/Dot.js"></script>
     <script src="drawing-scripts/Drunk.js"></script>
     <script src="drawing-scripts/Metro.js"></script>
     <script src="drawing-scripts/Snake.js"></script>
-
-    <title>Random Walker</title>
+    <script src="libraries/p5.js"></script>
+    <script src="libraries/utility.js"></script>
+    <script src="logic.js"></script>
+    <script src="sketch.js"></script>
+    <script src="ui-menu.js"></script>
+    <script src="ui-program.js"></script>
+    <script src="Walker.js"></script>
 </head>
 <body>
-    <h1>Generation Station (Walker) by RanDByyp <a href="https://twitter.com/RandbYyp">Twitter</a> - <a href="https://github.com/RanDByyp">GitHub</a></h1>
+    <div id="main-content-holder">
+        <div id="menu" >
+            <div id="menu-bar">
+                <button id="menu-toggle">▽</button>
+                <div id="nav">
+                    <button id="sub-menu-nav-toggle">Menu One</button>
+                </div>
+                <div id='nav-prison'></div>
+            </div>
+            <div id="sub-menu-holder">
+                <div id="sub-menu-nav">
+                    <!--SUB-MENU-NAV -- Put your 'Sub-Menu-Toggle' Buttons here. Make sure they have the same 'name' as their corresponding 'Sub-Menu'-->
+                    <button class="sub-menu-toggle active" name="sub-menu-0">Style</button>
+                    <button class="sub-menu-toggle" name="sub-menu-1">Color</button>
+                    <button class="sub-menu-toggle" name="sub-menu-2">Info</button>
+                    <!---->
+                </div>
+
+                <div class="sub-menu active" name="sub-menu-0">
+                <!--FREE TO ADD/REMOVE INPUT ELEMENTS TO YOUR LIKING, MAKE SURE TO USE THE FORMAT APPLIED TO THE EXAMPLES BELOW-->
+
+                     <!--Input Radio-->
+                     <div class="input-radio">
+                        <!--Input Radio Title-->
+                        <p><span>Drawing Style</span></p>
+
+                        <!--Input Radio Option-->
+                        <div class="input-radio-option">
+                            <label for="Dot" class="container">Dot
+                                <input type="radio" id="Dot" name="drawing-style" value="Dot" onchange="setDrawingStyle(this)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <!--Input Radio Option-->
+                        <div class="input-radio-option">
+                            <label for="Drunk" class="container">Drunk
+                                <input type="radio" id="Drunk" name="drawing-style" value="Drunk" onchange="setDrawingStyle(this)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <!--Input Radio Option-->
+                        <div class="input-radio-option">
+                            <label for="Metro" class="container">Metro
+                                <input type="radio" id="Metro" name="drawing-style" value="Metro" onchange="setDrawingStyle(this)" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <!--Input Radio Option-->
+                        <div class="input-radio-option">
+                            <label for="Snake" class="container">Snake
+                                <input type="radio" id="Snake" name="drawing-style" value="Snake" onchange="setDrawingStyle(this)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!--Input Checkbox-->   
+                    <div class='input-checkbox'>
+                        <label class="container">Animated
+                            <input type="checkbox" id="drawing-animated" onchange="setDrawAnimate(this)" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <!--Input Range-->
+                    <div class='input-range'>
+                        <label for="walker-amount">Walkers <span></span></label>
+                        <input type='range' class="slider" id='walker-amount' name='walker-amount' oninput="setWalkerAmount(this)">
+                    </div>
+
+                    <!--Input Range-->
+                    <div class='input-range'>
+                        <label for="cellsize">Cellsize <span></span></label>
+                        <input type='range' class="slider" id='cellsize' name='cellsize' min='2' max='16' step='2' value='4' oninput="setCellSize(this)">
+                    </div>
+
+                    <div class='input-checkbox'>
+                        <label class="container">Randomize
+                            <input type="checkbox" id="cellsize-randomize" onchange="setCellSizeRandomize(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class='input-range'>
+                        <label for="steps">Steps Multiplier <span></span></label>
+                        <input type='range' class="slider" id='steps' name='steps' min='100' max='4000' step='100' oninput="setSteps(this)">
+                    </div>
+
+                </div>
+
+                <div class="sub-menu" name="sub-menu-1">
+                    <!--Slider Hue-->
+                    <div class='input-range'>
+                        <label for="hue">Hue <span></span></label>
+                        <input type='range' class="slider" id='hue' name='hue' max='255' oninput="setHue(this)">
+                    </div>
+                    <!--Checkbox Hue Randomize-->
+                    <div class='input-checkbox'>
+                        <label class="container">Randomize
+                            <input type="checkbox" id="hue-randomize" onchange="setHueRandomize(this)" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <!--Slider Saturation-->
+                    <div class='input-range'>
+                        <label for="saturation">Saturation <span></span></label>
+                        <input type='range' class="slider" id='saturation' name='saturation' value='40' oninput="setSaturation(this)">
+                    </div>
+                    <!--Checkbox Saturation Randomize-->
+                    <div class='input-checkbox'>
+                        <label class="container">Randomize
+                            <input type="checkbox" id="saturation-randomize" onchange="setSaturationRandomize(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <!--Slider Brightness-->
+                    <div class='input-range'>
+                        <label for="brightness">Brightness <span></span></label>
+                        <input type='range' class="slider" id='brightness' name='brightness' value='80' oninput="setBrightness(this)">
+                    </div>
+                    <!--Checkbox Brightness Randomize-->
+                    <div class='input-checkbox'>
+                        <label class="container">Randomize
+                            <input type="checkbox" id="brightness-randomize" onchange="setBrightnessRandomize(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                
+
+                <div class="sub-menu" name="sub-menu-2">
+                    <!--Text Box-->
+                    <div class="text">
+                        <p>
+                            <span>Generation Station: Random Walker</span>
+                            <br><br>
+                            A small generative program which creates paths with the Random Walker technique coupled with the p5.js library and a canvas to draw the generated paths onto.
+                            <br><br>
+                            This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (which is not made by Joran).
+                        </p>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://twitter.com/RandbYyp" target="_blank"><span>Creator's Twitter<span></span></a>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://github.com/RanDByyp/Generation-Station-Random-Walker" target="_blank"><span>Project Page<span></span></a>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://github.com/RanDByyp/Generation-Station-Random-Walker/blob/master/license.txt" target="_blank"><span>Project License<span></span></a>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://p5js.org/" target="_blank"><span>P5js Library<span></span></a>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://github.com/processing/p5.js/blob/master/license.txt" target="_blank"><span>P5js License<span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="canvas-holder"></div>
+    </div>
 </body>
-</html>
+</html> 
