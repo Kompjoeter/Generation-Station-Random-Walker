@@ -23,72 +23,72 @@ function setLogic()
 function setDrawingStyle(trigger)
 {
     drawingStyle = trigger.value;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setDrawAnimate(trigger)
 {
     drawingAnimated = trigger.checked;
     console.log(drawingAnimated);
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setWalkerAmount(trigger)
 {
     walkerAmount = Number(trigger.value);
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setCellSize(trigger)
 {
     cellSize = Number(trigger.value);
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setCellSizeRandomize(trigger)
 {
     cellSizeRandomize = trigger.checked;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setHue(trigger)
 {
     hue = trigger.value;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setHueRandomize(trigger)
 {
     hueRandomize = trigger.checked;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setSaturation(trigger)
 {   
     saturation = trigger.value;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setSaturationRandomize(trigger)
 {
     saturationRandomize = trigger.checked;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setBrightness(trigger)
 {
     brightness = trigger.value;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setBrightnessRandomize(trigger)
 {
     brightnessRandomize = trigger.checked;
-    initializeDrawMethod();
+    initializeGenerator();
 }
 
 function setSteps(trigger)
 {
     stepsMultiplier = Number(trigger.value) *10;
-    initializeDrawMethod();
+    initializeGenerator();
 }
