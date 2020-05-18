@@ -52,8 +52,8 @@ var Metro = {
 
     /**
     * Draw Metro fully without Animation 
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
@@ -74,8 +74,8 @@ var Metro = {
 
     /**
     * Draw Metro Animated (loop)
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
@@ -118,19 +118,5 @@ var Metro = {
         
         //Increase/decrease part-of-path to draw
         this.counters[p] += this.countersIncr[p];
-    },
-
-    /**
-    * Draw Metro Bounds  
-    * @param {Object} path - The path to draw bounds for.
-    * @param {Color} color - The desired color of the bounds. 
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
-    */   
-    //Debugging tool: Draws drawing-bounds to canvas.
-    drawBounds: function(path, color)
-    {
-        noFill();
-        stroke(color);
-        rect(myPaths[path].boundsMinX,myPaths[path].boundsMinY,myPaths[path].boundsMaxX-myPaths[path].boundsMinX,myPaths[path].boundsMaxY-myPaths[path].boundsMinY);
     }
 }

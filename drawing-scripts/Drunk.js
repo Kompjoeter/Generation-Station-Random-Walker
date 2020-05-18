@@ -51,8 +51,8 @@ var Drunk = {
 
     /**
     * Draw Drunk fully without Animation 
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
@@ -72,8 +72,8 @@ var Drunk = {
 
     /**
     * Draw Drunk Animated
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in sketch.js
@@ -96,19 +96,5 @@ var Drunk = {
                 this.counters[p]++;
             }
         };
-    },
-
-    /**
-    * Draw Drunk Bounds  
-    * @param {Object} path - The path to draw bounds for.
-    * @param {Color} color - The desired color of the bounds. 
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
-    */   
-    //Debugging tool: Draws drawing-bounds to canvas.
-    drawBounds: function(path, color)
-    {
-        stroke(color);
-        noFill();
-        rect(myPaths[path].boundsMinX,myPaths[path].boundsMinY,myPaths[path].boundsMaxX-myPaths[path].boundsMinX,myPaths[path].boundsMaxY-myPaths[path].boundsMinY);
     }
 }

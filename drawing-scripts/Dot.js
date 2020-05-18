@@ -37,8 +37,8 @@ var Dot =
 
     /**
     * Draw Dot fully without Animation 
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
@@ -57,8 +57,8 @@ var Dot =
 
     /**
     * Draw Dot Animated (loop)
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in sketch.js
@@ -74,18 +74,5 @@ var Dot =
         let goal = pathObject.getGoal(pathObject.boundsMinX,pathObject.boundsMaxX,pathObject.boundsMinY,pathObject.boundsMaxY,pathObject.dirAmount,pathObject.onlyDiag,pathObject.path[0][0],pathObject.path[0][1],pathObject.cellSize);
         pathObject.path[0][0] = goal[0];
         pathObject.path[0][1] = goal[1];
-    },
-
-    /**
-    * Draw Dot Bounds  
-    * @param {Object} path - The path to draw bounds for.
-    * @param {Color} color - The desired color of the bounds. 
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
-    */   
-    //Debugging tool: Draws drawing-bounds to canvas.
-    drawBounds: function(path, color)
-    {
-        stroke(color);
-        rect(myPaths[path].boundsMinX,myPaths[path].boundsMinY,myPaths[path].boundsMaxX-myPaths[path].boundsMinX,myPaths[path].boundsMaxY-myPaths[path].boundsMinY);
     }
 }
