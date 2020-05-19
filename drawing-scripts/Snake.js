@@ -45,22 +45,22 @@ var Snake =
 
     /**
     * Draw Snake fully without Animation 
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
-    drawStatic: function(path,color)
+    drawStatic: function(pathObject,pathIndex)
     {
-        let p = path;
+        let color = pathObject.color;
 
         //Draw current path(p) fully
-        for(let i = 0; i < myPaths[p].steps - 1; i++)
+        for(let i = 0; i < pathObject.steps - 1; i++)
         {
             stroke(color);  
-            strokeWeight(myPaths[p].cellSize/4);
+            strokeWeight(pathObject.cellSize/4);
             noFill();
-            square(myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].cellSize);
+            square(pathObject.path[i][0],pathObject.path[i][1],pathObject.cellSize);
         }
         //Run 'sketch.js > draw()' once
         noLoop();
@@ -68,49 +68,35 @@ var Snake =
 
     /**
     * Draw Snake Animated (loop)
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
-    drawAnimate: function(path, color) 
+    drawAnimate: function(pathObject, pathIndex) 
     {
-        let p = path;
+        let color = pathObject.color;
 
         //Draw current path(p) fully
-        for(let i = 0; i < myPaths[p].steps -1; i++)
+        for(let i = 0; i < pathObject.steps -1; i++)
         {
             stroke(color);
-            strokeWeight(myPaths[p].cellSize/4);
+            strokeWeight(pathObject.cellSize/4);
             noFill();
-            square(myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].cellSize/4);
+            square(pathObject.path[i][0],pathObject.path[i][1],pathObject.cellSize/4);
         }
 
         //Set coordinates of Array index to coordinates of upper Array index
-        for(let i = 0; i < myPaths[p].steps -1; i++)
+        for(let i = 0; i < pathObject.steps -1; i++)
         {
-            myPaths[p].path[i][0] = myPaths[p].path[i+1][0];
-            myPaths[p].path[i][1] = myPaths[p].path[i+1][1];
+            pathObject.path[i][0] = pathObject.path[i+1][0];
+            pathObject.path[i][1] = pathObject.path[i+1][1];
         }
         
         //Generate new goal/coordinates for last Array index AKA 'head-of-snake'
-        let goal = myPaths[p].getGoal(myPaths[p].boundsMinX,myPaths[p].boundsMaxX,myPaths[p].boundsMinY,myPaths[p].boundsMaxY,myPaths[p].dirAmount,myPaths[p].onlyDiag,myPaths[p].path[myPaths[p].steps-1][0],myPaths[p].path[myPaths[p].steps-1][1],myPaths[p].cellSize);        
+        let goal = pathObject.getGoal(pathObject.boundsMinX,pathObject.boundsMaxX,pathObject.boundsMinY,pathObject.boundsMaxY,pathObject.dirAmount,pathObject.onlyDiag,pathObject.path[pathObject.steps-1][0],pathObject.path[pathObject.steps-1][1],pathObject.cellSize);        
 
-        myPaths[p].path[myPaths[p].steps-1][0] = goal[0];
-        myPaths[p].path[myPaths[p].steps-1][1] = goal[1];
-    },
-
-    /**
-    * Draw Snake Bounds  
-    * @param {Object} path - The path to draw bounds for.
-    * @param {Color} color - The desired color of the bounds. 
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
-    */   
-    //Debugging tool: Draws drawing-bounds to canvas.
-    drawBounds: function(path, color)
-    {
-        stroke(color);
-        noFill();
-        rect(myPaths[path].boundsMinX,myPaths[path].boundsMinY,myPaths[path].boundsMaxX-myPaths[path].boundsMinX,myPaths[path].boundsMaxY-myPaths[path].boundsMinY);
+        pathObject.path[pathObject.steps-1][0] = goal[0];
+        pathObject.path[pathObject.steps-1][1] = goal[1];
     }
 }

@@ -51,20 +51,20 @@ var Drunk = {
 
     /**
     * Draw Drunk fully without Animation 
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
-    drawStatic: function(path,color)
+    drawStatic: function(pathObject,pathIndex)
     {
-        let p = path;
+        let color = pathObject.color;
 
         //Draw current path(p) fully
-        for(let i = 0; i < myPaths[p].steps - 1; i++)
+        for(let i = 0; i < pathObject.steps - 1; i++)
         {
             stroke(color);
-            line(myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].path[i+1][0],myPaths[p].path[i+1][1]);
+            line(pathObject.path[i][0],pathObject.path[i][1],pathObject.path[i+1][0],pathObject.path[i+1][1]);
         }
         //Run 'sketch.js > draw()' once
         noLoop();
@@ -72,42 +72,29 @@ var Drunk = {
 
     /**
     * Draw Drunk Animated
-    * @param {Object} path - The path to draw. 
-    * @param {Color} color - The desired color of the path's steps. 
+    * @param {Object} pathObject - The path to draw. 
+    * @param {Int} pathIndex - The index of the path to draw.
     * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in sketch.js
-    drawAnimate: function(path, color) 
+    drawAnimate: function(pathObject, pathIndex) 
     {
         {
-            let p = path;
+            let color = pathObject.color;
+            let p = pathIndex;
             
             //Draw part of path from origin[0] to counter value
             for(let i = 0; i < this.counters[p]; i++)
             {
                 stroke(color);
-                line(myPaths[p].path[i][0],myPaths[p].path[i][1],myPaths[p].path[i+1][0],myPaths[p].path[i+1][1]);
+                line(pathObject.path[i][0],pathObject.path[i][1],pathObject.path[i+1][0],pathObject.path[i+1][1]);
             }
 
             //If path is not fully drawn
-            if (this.counters[p] < myPaths[p].steps -1) 
+            if (this.counters[p] < pathObject.steps -1) 
             {
                 this.counters[p]++;
             }
         };
-    },
-
-    /**
-    * Draw Drunk Bounds  
-    * @param {Object} path - The path to draw bounds for.
-    * @param {Color} color - The desired color of the bounds. 
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
-    */   
-    //Debugging tool: Draws drawing-bounds to canvas.
-    drawBounds: function(path, color)
-    {
-        stroke(color);
-        noFill();
-        rect(myPaths[path].boundsMinX,myPaths[path].boundsMinY,myPaths[path].boundsMaxX-myPaths[path].boundsMinX,myPaths[path].boundsMaxY-myPaths[path].boundsMinY);
     }
 }
