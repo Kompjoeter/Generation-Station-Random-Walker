@@ -6,7 +6,6 @@
     <title>Canvas UI</title>
     <link rel="stylesheet" type="text/css" href="main-aesthetic.css">
     <link rel="stylesheet" type="text/css" href="main-spatial.css">
-    <script src="drawing-scripts/Dot.js"></script>
     <script src="drawing-scripts/Drunk.js"></script>
     <script src="drawing-scripts/Metro.js"></script>
     <script src="drawing-scripts/Snake.js"></script>
@@ -39,7 +38,6 @@
                 </div>
 
                 <div class="sub-menu active" name="sub-menu-0">
-             
                     <!--Text Box-->
                     <div class="text">
                         <p>
@@ -59,52 +57,48 @@
 
                 <div class="sub-menu" name="sub-menu-1">
 
-                            <!--Radio Drawing Style-->
-                            <div class="input-radio">
-                                <!--Radio Title-->
-                                <p><span>Drawing Style</span></p>
-        
-                                <!--Radio Option Drunk-->
-                                <div class="input-radio-option">
-                                    <label for="Drunk" class="container">Drunk
-                                        <input type="radio" id="Drunk" name="drawing-style" value="Drunk" onchange="setDrawingStyle(this)">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-        
-                                <!--Radio Option Metro-->
-                                <div class="input-radio-option">
-                                    <label for="Metro" class="container">Metro
-                                        <input type="radio" id="Metro" name="drawing-style" value="Metro" onchange="setDrawingStyle(this)" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-        
-                                <!--Radio Option Snake-->
-                                <div class="input-radio-option">
-                                    <label for="Snake" class="container">Snake
-                                        <input type="radio" id="Snake" name="drawing-style" value="Snake" onchange="setDrawingStyle(this)">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <!--Checkbox Animated-->   
-                            <div class='input-checkbox'>
-                                <label class="container">Animated
-                                    <input type="checkbox" id="drawing-animated" onchange="setDrawAnimate(this)" checked="checked">
+                        <!--Radio Drawing Style-->
+                        <div class="input-radio">
+                            <!--Radio Title-->
+                            <p><span>Drawing Style</span></p>
+    
+                            <!--Radio Option Drunk-->
+                            <div class="input-radio-option">
+                                <label for="Drunk" class="container">Drunk
+                                    <input type="radio" id="Drunk" name="drawing-style" value="Drunk" onchange="setDrawingStyle(this)">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                  
-
-             
+    
+                            <!--Radio Option Metro-->
+                            <div class="input-radio-option">
+                                <label for="Metro" class="container">Metro
+                                    <input type="radio" id="Metro" name="drawing-style" value="Metro" onchange="setDrawingStyle(this)" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+    
+                            <!--Radio Option Snake-->
+                            <div class="input-radio-option">
+                                <label for="Snake" class="container">Snake
+                                    <input type="radio" id="Snake" name="drawing-style" value="Snake" onchange="setDrawingStyle(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <!--Checkbox Animated-->   
+                        <div class='input-checkbox'>
+                            <label class="container">Animated
+                                <input type="checkbox" id="drawing-animated" onchange="setDrawAnimate(this)" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                 </div>
                 
 
                 <div class="sub-menu" name="sub-menu-2">
-
-                        <!--Sliders Walkers-->
-                        <div class='input-range'>
+                    <!--Sliders Walkers-->
+                    <div class='input-range'>
                         <label for="walker-amount">Walkers <span></span></label>
                         <input type='range' class="slider" id='walker-amount' name='walker-amount' min='1' max='25' value='5' oninput="setWalkerAmount(this)">
                     </div>
@@ -123,7 +117,7 @@
                     <!--Slider Steps-->
                     <div class='input-range'>
                         <label for="steps">Step Range <span></span></label>
-                        <input type='range' class="slider" id='steps' name='steps' min='10' max='150' step='100' oninput="setSteps(this)">
+                        <input type='range' class="slider" id='steps' name='steps' min='10' max='150' step='10' value='150' oninput="setSteps(this)">
                     </div>
                 </div>
 
