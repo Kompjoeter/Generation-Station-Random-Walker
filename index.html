@@ -10,7 +10,7 @@
     <script src="drawing-scripts/Drunk.js"></script>
     <script src="drawing-scripts/Metro.js"></script>
     <script src="drawing-scripts/Snake.js"></script>
-    <script src="libraries/p5.js"></script>
+    <script src="libraries/p5.min.js"></script>
     <script src="libraries/utility.js"></script>
     <script src="logic.js"></script>
     <script src="sketch.js"></script>
@@ -46,6 +46,8 @@
                             <span>Generation Station: Random Walker</span>
                             <br><br>
                             A small generative program which creates paths with the Random Walker technique coupled with the p5.js library and a canvas to draw the generated paths onto.
+                            <br><br>
+                            This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (which is not made by Joran).
                         </p>
                     </div>
 
@@ -61,14 +63,6 @@
                             <div class="input-radio">
                                 <!--Radio Title-->
                                 <p><span>Drawing Style</span></p>
-        
-                                <!--Radio Option Dot-->
-                                <div class="input-radio-option">
-                                    <label for="Dot" class="container">Dot
-                                        <input type="radio" id="Dot" name="drawing-style" value="Dot" onchange="setDrawingStyle(this)">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
         
                                 <!--Radio Option Drunk-->
                                 <div class="input-radio-option">
@@ -112,7 +106,7 @@
                         <!--Sliders Walkers-->
                         <div class='input-range'>
                         <label for="walker-amount">Walkers <span></span></label>
-                        <input type='range' class="slider" id='walker-amount' name='walker-amount' oninput="setWalkerAmount(this)">
+                        <input type='range' class="slider" id='walker-amount' name='walker-amount' min='1' max='25' value='5' oninput="setWalkerAmount(this)">
                     </div>
                     <!--Slider CellSize-->
                     <div class='input-range'>
@@ -128,8 +122,8 @@
                     </div>
                     <!--Slider Steps-->
                     <div class='input-range'>
-                        <label for="steps">Steps Multiplier <span></span></label>
-                        <input type='range' class="slider" id='steps' name='steps' min='100' max='4000' step='100' oninput="setSteps(this)">
+                        <label for="steps">Step Range <span></span></label>
+                        <input type='range' class="slider" id='steps' name='steps' min='10' max='150' step='100' oninput="setSteps(this)">
                     </div>
                 </div>
 

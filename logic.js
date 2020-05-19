@@ -58,7 +58,8 @@ function initializeGenerator()
             cellSize = Math.ceil(Math.random() * 4) * 4;
         }
         //let cellSize = 4;
-        let steps = Math.floor(Math.random() * (stepsMultiplier / cellSize) + 10);
+        let steps = Math.floor(Math.random() * (stepsMultiplier));
+        //let steps = Math.floor(Math.random() * (stepsMultiplier / cellSize) + 10);
         //let steps = 40;        
         myPaths.push (window[drawingStyle].initialize(cellSize*4,canvasWidth-(cellSize*4),cellSize*4,canvasHeight-(cellSize*4),cellSize,steps,4,false,color));
     }
