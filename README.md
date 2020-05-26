@@ -1,12 +1,18 @@
 # Generation Station (Random Walker)
 
 # Description
-A tiny library of functions to generate paths with the Random Walker technique coupled with the p5.js library
+A tiny library of functions to generate paths with the Random Walker technique, coupled with the p5.js library
 and a canvas to draw the generated paths onto.
 
-The scripts in the 'drawing-scripts' folder are examples of how you can use the Walker.js library (+ the p5.js library) to create a variety of ways to draw generative-art onto the canvas. Which are then initalized and called in sketch.js.
+The scripts in the 'drawing-scripts' folder are examples of how one can use the Walker.js library (+ the p5.js library) to create a variety of ways to draw generative-art onto the canvas. Which are then initalized and called in sketch.js.
 
-This project was made to experiment with the Random Walker technique and have its results be visible on screen. In the future I might add different techniques (For example: flow-fields, perlin-noise) to the Generation Station which then also can be used to create a variety of generative-art.
+The user interface is based of a seperate project I made, 'Responsive Template Canvas UI' which can be found here (link).
+
+# Purpose
+
+I made this project to get familiar with the p5.js library and used it to test my 'Responsive Template Canvas UI'.
+
+# Contents
 
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
