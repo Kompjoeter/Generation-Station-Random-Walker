@@ -8,11 +8,28 @@ The scripts in the 'drawing-scripts' folder are examples of how one can use the 
 
 The user interface is based of a seperate project I made, 'Responsive Template Canvas UI' which can be found here (link).
 
-# Purpose
-
+**Purpose**
 I made this project to get familiar with the p5.js library and used it to test my 'Responsive Template Canvas UI'.
 
 # Contents
+**HTML**
+  * index.html
+**CSS**
+  * main-aesthetic.css
+  * main-spatial.css
+**JS**
+  * libraries
+    * p5.min.js
+    * utility.js 
+  * drawing-scripts
+    * Drunk.js
+    * Metro.js
+    * Snake.js
+  * Walker.js
+  * logic.js
+  * sketch.js
+  * ui-menu.js
+  * ui-program.js
 
 # Credits
 This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (https://p5js.org/) (which is not made by Joran).
