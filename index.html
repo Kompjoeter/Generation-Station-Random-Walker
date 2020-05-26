@@ -38,129 +38,154 @@
                 </div>
 
                 <div class="sub-menu active" name="sub-menu-0">
-             
                     <!--Text Box-->
                     <div class="text">
                         <p>
                             <span>Generation Station: Random Walker</span>
                             <br><br>
-                            A small generative program which creates paths with the Random Walker technique coupled with the p5.js library and a canvas to draw the generated paths onto.
+                            A small generative program which creates paths with the Random Walker technique coupled with the P5 Library and a canvas to draw the generated paths onto (in three unique ways).
                             <br><br>
-                            This program was made by Joran de Boer AKA RanDByyp using the p5.js Library (which is not made by Joran).
+                            I made this program to get familiar with the P5 Library and coupled my Template Canvas-UI to it, which can be found as a standalone project on my GitHub.
+                            <br><br>
+                            Joran de Boer (RanDByyp)
                         </p>
                     </div>
 
                     <!--Button Generate-->
                     <div class="input-button">
-                        <input type='button' value='Generate' onclick="initializeGenerator();">
+                        <input type='button' value='Generate' onclick="initializeGenerator()">
                     </div>
                 </div>
 
                 <div class="sub-menu" name="sub-menu-1">
-
-                            <!--Radio Drawing Style-->
-                            <div class="input-radio">
-                                <!--Radio Title-->
-                                <p><span>Drawing Style</span></p>
-        
-                                <!--Radio Option Drunk-->
-                                <div class="input-radio-option">
-                                    <label for="Drunk" class="container">Drunk
-                                        <input type="radio" id="Drunk" name="drawing-style" value="Drunk" onchange="setDrawingStyle(this)">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-        
-                                <!--Radio Option Metro-->
-                                <div class="input-radio-option">
-                                    <label for="Metro" class="container">Metro
-                                        <input type="radio" id="Metro" name="drawing-style" value="Metro" onchange="setDrawingStyle(this)" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-        
-                                <!--Radio Option Snake-->
-                                <div class="input-radio-option">
-                                    <label for="Snake" class="container">Snake
-                                        <input type="radio" id="Snake" name="drawing-style" value="Snake" onchange="setDrawingStyle(this)">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <!--Checkbox Animated-->   
-                            <div class='input-checkbox'>
-                                <label class="container">Animated
-                                    <input type="checkbox" id="drawing-animated" onchange="setDrawAnimate(this)" checked="checked">
+                        <!--Radio Drawing Style-->
+                        <div class="input-radio">
+                            <!--Radio Title-->
+                            <p><span>Drawing Style</span></p>
+    
+                            <!--Radio Option Drunk-->
+                            <div class="input-radio-option">
+                                <label for="Drunk" class="container">Drunk
+                                    <input type="radio" id="Drunk" name="drawing-style" value="Drunk">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                  
+    
+                            <!--Radio Option Metro-->
+                            <div class="input-radio-option">
+                                <label for="Metro" class="container">Metro
+                                    <input type="radio" id="Metro" name="drawing-style" value="Metro" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+    
+                            <!--Radio Option Snake-->
+                            <div class="input-radio-option">
+                                <label for="Snake" class="container">Snake
+                                    <input type="radio" id="Snake" name="drawing-style" value="Snake">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <!--Checkbox Animated-->   
+                        <div class='input-checkbox'>
+                            <label class="container">Animated
+                                <input type="checkbox" id="drawing-animated" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
 
-             
+                    <!--Radio Directions Amount-->
+                    <div class="input-radio">
+                        <!--Radio Title-->
+                        <p><span>Directions</span></p>
+
+                        <!--Radio Option 4-->
+                        <div class="input-radio-option">
+                            <label for="dir-4" class="container">4
+                                <input type="radio" id="dir-4" name="directions-amount" value="4" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <!--Radio Option 8-->
+                        <div class="input-radio-option">
+                            <label for="dir-8" class="container">8
+                                <input type="radio" id="dir-8" name="directions-amount" value="8">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!--Checkbox Diagonal Only-->
+                    <div class='input-checkbox'>
+                        <label class="container">Diagonal Only (4)
+                            <input type="checkbox" id="diagonal-only">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
-                
 
                 <div class="sub-menu" name="sub-menu-2">
-
-                        <!--Sliders Walkers-->
-                        <div class='input-range'>
+                    <!--Sliders Walkers-->
+                    <div class='input-range'>
                         <label for="walker-amount">Walkers <span></span></label>
-                        <input type='range' class="slider" id='walker-amount' name='walker-amount' min='1' max='25' value='5' oninput="setWalkerAmount(this)">
+                        <input type='range' class="slider" id='walker-amount' name='walker-amount' min='1' max='25' value='5'>
                     </div>
                     <!--Slider CellSize-->
                     <div class='input-range'>
                         <label for="cellsize">Cellsize <span></span></label>
-                        <input type='range' class="slider" id='cellsize' name='cellsize' min='2' max='16' step='2' value='4' oninput="setCellSize(this)">
+                        <input type='range' class="slider" id='cellsize' name='cellsize' min='2' max='16' step='2' value='4'>
                     </div>
                     <!--Checkbox CellSize Randomize-->
                     <div class='input-checkbox'>
                         <label class="container">Randomize
-                            <input type="checkbox" id="cellsize-randomize" onchange="setCellSizeRandomize(this)">
+                            <input type="checkbox" id="cellsize-randomize">
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <!--Slider Steps-->
                     <div class='input-range'>
                         <label for="steps">Step Range <span></span></label>
-                        <input type='range' class="slider" id='steps' name='steps' min='10' max='150' step='100' oninput="setSteps(this)">
+                        <input type='range' class="slider" id='steps' name='steps' min='10' max='250' step='10' value='50'>
                     </div>
-                </div>
+            </div>
 
 
                 <div class="sub-menu" name="sub-menu-3">
                     <!--Slider Hue-->
                     <div class='input-range'>
                         <label for="hue">Hue <span></span></label>
-                        <input type='range' class="slider" id='hue' name='hue' max='255' oninput="setHue(this)">
+                        <input type='range' class="slider" id='hue' name='hue' max='360'>
                     </div>
                     <!--Checkbox Hue Randomize-->
                     <div class='input-checkbox'>
                         <label class="container">Randomize
-                            <input type="checkbox" id="hue-randomize" onchange="setHueRandomize(this)" checked="checked">
+                            <input type="checkbox" id="hue-randomize" checked="checked">
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <!--Slider Saturation-->
                     <div class='input-range'>
                         <label for="saturation">Saturation <span></span></label>
-                        <input type='range' class="slider" id='saturation' name='saturation' value='40' oninput="setSaturation(this)">
+                        <input type='range' class="slider" id='saturation' name='saturation' value='40'>
                     </div>
                     <!--Checkbox Saturation Randomize-->
                     <div class='input-checkbox'>
                         <label class="container">Randomize
-                            <input type="checkbox" id="saturation-randomize" onchange="setSaturationRandomize(this)">
+                            <input type="checkbox" id="saturation-randomize">
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <!--Slider Brightness-->
                     <div class='input-range'>
                         <label for="brightness">Brightness <span></span></label>
-                        <input type='range' class="slider" id='brightness' name='brightness' value='80' oninput="setBrightness(this)">
+                        <input type='range' class="slider" id='brightness' name='brightness' value='80'>
                     </div>
                     <!--Checkbox Brightness Randomize-->
                     <div class='input-checkbox'>
                         <label class="container">Randomize
-                            <input type="checkbox" id="brightness-randomize" onchange="setBrightnessRandomize(this)">
+                            <input type="checkbox" id="brightness-randomize">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -173,7 +198,15 @@
                     </div>
                     <!--Link-->
                     <div class="link">
-                        <a href="https://github.com/RanDByyp/Generation-Station-Random-Walker" target="_blank"><span>Project Page<span></span></a>
+                        <a href="https://github.com/RanDByyp/Generation-Station-Random-Walker" target="_blank"><span>Project Page (GitHub)<span></span></a>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://github.com/RanDByyp/Canvas-UI" target="_blank"><span>Canvas-UI Page (GitHub)<span></span></a>
+                    </div>
+                    <!--Link-->
+                    <div class="link">
+                        <a href="https://github.com/processing/p5.js/blob/master/license.txt" target="_blank"><span>P5 License<span></span></a>
                     </div>
                 </div>
 

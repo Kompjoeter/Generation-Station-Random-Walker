@@ -36,7 +36,6 @@ body
 {
     display: grid;
     width: 100%;
-    overflow-y: scroll; 
 }
 
 /*----------Menu-Bar----------*/
@@ -90,8 +89,8 @@ button
     visibility: hidden;
     display: inline;
     grid-row: 2/3;
- 
     padding: 0;
+    overflow-y: scroll;
 }
 
 #sub-menu-holder.active
@@ -108,7 +107,7 @@ button
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 1em;
+    gap: 1em; 
 }
 
 #sub-menu-holder.active .sub-menu.active

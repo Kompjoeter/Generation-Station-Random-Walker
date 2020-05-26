@@ -1,32 +1,29 @@
-
-
 function setup() 
 {   
     c = createCanvas(canvasWidth,canvasHeight);
     c.id('canvas');
     c.parent('canvas-holder');
 
-    setLogic();
+    initializeLogic();
     initializeGenerator();
-
 }
-
-
 
 function draw()
 {   
-    clear();
-    //Feel free to change the background color
-    background(25);
+        //Reset Canvas
+        clear();
+        //Feel free to change the background color
+        background(25);
 
-    //Draw Generator Output to Canvas, either Animated or Static
-    for(let i = 0; i < walkerAmount; i++)
-    {
-        if (drawingAnimated)
-        {   window[drawingStyle].drawAnimate(myPaths[i],i);}
-        else
-        { window[drawingStyle].drawStatic(myPaths[i],i);}
-    }
+        //Draw Generator Output to Canvas, either Animated or Static
+        for(let i = 0; i < walkerAmount; i++)
+        {
+            if (drawingAnimated)
+            {   
+                window[drawingStyle].drawAnimate(myPaths[i],i);}
+            else
+            { window[drawingStyle].drawStatic(myPaths[i],i);}
+        }
 }
 
 function windowResized()
