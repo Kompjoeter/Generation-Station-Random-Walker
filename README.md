@@ -6,7 +6,7 @@ and a canvas to draw the generated paths onto.
 
 The scripts in the 'drawing-scripts' folder are examples of how one can use the Walker.js library (+ the p5.js library) to create a variety of ways to draw generative-art onto the canvas. Which are then initalized and called in sketch.js.
 
-The user interface is based of a seperate project I made, 'Responsive Template Canvas UI' which can be found here (link).
+The user interface is based of a seperate project I made, [Responsive Template Canvas UI](https://github.com/RanDByyp/Responsive-Template-Canvas-UI).
 
 My purpose for making this project was to get familiar with the p5.js library and used it to test my 'Responsive Template Canvas UI'.
 
