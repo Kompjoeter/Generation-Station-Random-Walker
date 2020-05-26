@@ -8,23 +8,22 @@ The scripts in the 'drawing-scripts' folder are examples of how one can use the 
 
 The user interface is based of a seperate project I made, 'Responsive Template Canvas UI' which can be found here (link).
 
-**Purpose**
-I made this project to get familiar with the p5.js library and used it to test my 'Responsive Template Canvas UI'.
+My purpose for making this project was to get familiar with the p5.js library and used it to test my 'Responsive Template Canvas UI'.
 
 # Contents
-**HTML**
-  * index.html
-**CSS**
-  * main-aesthetic.css
-  * main-spatial.css
-**JS**
+* **HTML**
+  * index.html **(Contains all UI Elements + Canvas (Edited from Template Canvas UI), and initializes all scripts.)**
+* **CSS**
+  * main-aesthetic.css **(Contains all Aesthetic styling for the UI (From Template Canvas UI))**
+  * main-spatial.css **(Contains all Spatial/Functional styling for the UI (From Template Canvas UI))**
+* **JS**
   * libraries
-    * p5.min.js
-    * utility.js 
+    * p5.min.js **(A minimal version of the p5js Library)**
+    * utility.js **(A tiny library with general functions used in UI)**
   * drawing-scripts
-    * Drunk.js
-    * Metro.js
-    * Snake.js
+    * Drunk.js **(A unique method to draw Random Walkers to the Canvas, Static or Animated.)**
+    * Metro.js **(A unique method to draw Random Walkers to the Canvas, Static or Animated.)**
+    * Snake.js **(A unique method to draw Random Walkers to the Canvas, Static or Animated.)**
   * Walker.js
   * logic.js
   * sketch.js
