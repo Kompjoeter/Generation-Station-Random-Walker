@@ -53,7 +53,6 @@ var Drunk = {
     * Draw Drunk fully without Animation 
     * @param {Object} pathObject - The path to draw. 
     * @param {Int} pathIndex - The index of the path to draw.
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
     drawStatic: function(pathObject,pathIndex)
@@ -74,7 +73,6 @@ var Drunk = {
     * Draw Drunk Animated
     * @param {Object} pathObject - The path to draw. 
     * @param {Int} pathIndex - The index of the path to draw.
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in sketch.js
     drawAnimate: function(pathObject, pathIndex) 

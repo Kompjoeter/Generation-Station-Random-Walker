@@ -17,7 +17,6 @@ onload = function initialize()
         menuToggle.addEventListener("click",function() 
         {
             toggleMenu(this);
-            //subMenuActive.style.visibility = 'initial';
         });
 
         //Add trigger functions for when Sub-Menu-Navigator Toggle is pressed.
@@ -57,6 +56,7 @@ onload = function initialize()
     displayChangeSubMenuNavToggle();
 }
 
+//Show/Hide Menu
 function toggleMenu(trigger)
 {
     let menu = document.getElementById('menu');
@@ -76,12 +76,14 @@ function toggleMenu(trigger)
     doThingWithClassIfNotContains(menu,'active',function() { setPropertyOfElement(trigger,'innerText','▽'); });
 }
 
+//Show/Hide Sub-Menu Navigator
 function toggleSubMenuNav()
 {
     let subMenuNav = document.getElementById('sub-menu-nav');
     subMenuNav.classList.toggle('active');
 }
 
+//Switch Active Sub-Menu shown in Sub-Menu-Holder
 function toggleSubMenu(trigger)
 {
     //If pressed and Sub-Menu-Toggle does not equal active Sub-Menu,
@@ -102,10 +104,12 @@ function toggleSubMenu(trigger)
     }
 }
 
+//Get Highest Sub-Menu, and Set Sub-Menu-Holder 'min-height' to that value (If not fit browser, make it fit)
 function setMinHeightSubMenuHolder()
 {
     let menu = document.getElementById('menu');
     let menuToggle = document.getElementById('menu-toggle');
+    let menuBar = document.getElementById('menu-bar');
     let subMenu = document.getElementsByClassName('sub-menu');
     let subMenuHolder = document.getElementById('sub-menu-holder');
     let isActive = menu.classList.contains('active');
@@ -126,6 +130,15 @@ function setMinHeightSubMenuHolder()
             minHeight = subMenu[i].clientHeight;
         }
     }
+
+    //Check if min-height fits within browser.
+    //If not, set min-height to the amount of vertical space that is left.
+    let actualSpace = window.innerHeight - menuBar.offsetHeight;
+    if (minHeight > actualSpace)
+    {
+        minHeight = actualSpace;
+    }
+
     //Set min-height of sub-menu wrapper to value of highest sub-menu.
     setStylePropertyOfElement(subMenuHolder,'minHeight',minHeight+"px");
 
@@ -136,6 +149,7 @@ function setMinHeightSubMenuHolder()
     }
 }
 
+//Switch Sub-Menu-Toggle Buttons between Menu-Bar and Collapsible Sub-Menu-Navigator
 function replaceSubMenuNav()
 {
     let subMenuNav = document.getElementById('sub-menu-nav');
@@ -168,6 +182,7 @@ function replaceSubMenuNav()
     }
 }
 
+//Check if Sub-Menu-Toggle Buttons fit within the Width of the Menu
 function checkIfNavIsTooLarge()
 {
     let nav = document.getElementById('nav');
@@ -183,6 +198,7 @@ function checkIfNavIsTooLarge()
     return navIsTooLarge;
 }
 
+//Display Active Sub-Menu and Collapsed State of Sub-Menu-Navigator-Toggle Button
 function displayChangeSubMenuNavToggle()
 {
     let subMenuNav = document.getElementById('sub-menu-nav');
@@ -194,6 +210,7 @@ function displayChangeSubMenuNavToggle()
     doThingWithClassIfNotContains(subMenuNav,'active',function() { setPropertyOfElement(subMenuNavToggle,'innerText',subMenuToggleActive.innerText +' ▽'); });
 }
 
+//Display Value of Input Element Range/Slider
 function displayChangeInputRange(trigger)
 {
     let selectorString = 'label[for="'+trigger.name+'"] span';

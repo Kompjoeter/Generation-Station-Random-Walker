@@ -47,7 +47,6 @@ var Snake =
     * Draw Snake fully without Animation 
     * @param {Object} pathObject - The path to draw. 
     * @param {Int} pathIndex - The index of the path to draw.
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
     drawStatic: function(pathObject,pathIndex)
@@ -70,7 +69,6 @@ var Snake =
     * Draw Snake Animated (loop)
     * @param {Object} pathObject - The path to draw. 
     * @param {Int} pathIndex - The index of the path to draw.
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
     drawAnimate: function(pathObject, pathIndex) 

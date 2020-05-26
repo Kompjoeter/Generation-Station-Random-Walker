@@ -1,94 +1,124 @@
-function setLogic()
+//Set Logic Variables for first run and addEventListeners.
+function initializeLogic()
 {
-    cellSize = Number(document.getElementById('cellsize').value);
-    cellSizeRandomize = document.getElementById('cellsize-randomize').checked;
-    drawingStyle = document.querySelector("input[name='drawing-style']:checked").value;
-    drawingAnimated = document.getElementById('drawing-animated').checked;
-    walkerAmount = Number(document.getElementById('walker-amount').value);
+    let inputCellSize = document.getElementById('cellsize');
+    cellSize = Number(inputCellSize.value);
+    inputCellSize.addEventListener('change',function()
+    {
+        cellSize = Number(inputCellSize.value);
+        initializeGenerator();
+    });
 
-    hue = document.getElementById('hue').value;
-    hueRandomize = document.getElementById('hue-randomize').checked;
-    saturation = document.getElementById('saturation').value;
-    saturationRandomize = document.getElementById('saturation-randomize').checked;
-    brightness = document.getElementById('brightness').value;
-    brightnessRandomize = document.getElementById('brightness-randomize').checked;
+    let inputCellSizeRandomize = document.getElementById('cellsize-randomize');
+    cellSizeRandomize = inputCellSizeRandomize.checked;
+    inputCellSizeRandomize.addEventListener('change',function()
+    {
+        cellSizeRandomize = inputCellSizeRandomize.checked;
+        initializeGenerator();
+    });
 
-    stepsMultiplier = Number(document.getElementById('steps').value);
+    let checkedInputDrawingStyle = document.querySelector("input[name='drawing-style']:checked");
+    drawingStyle = checkedInputDrawingStyle.value;
+    let inputDrawingStyle = document.getElementsByName('drawing-style');
 
-    console.log(hue);
-    console.log(saturation);
-    console.log(brightness);
-}
+    for(let i = 0; i < inputDrawingStyle.length; i++)
+    {
+        inputDrawingStyle[i].addEventListener('change',function()
+        {
+            drawingStyle = inputDrawingStyle[i].value;
+            initializeGenerator();
+        });
+    }
+    
+    let inputDrawingAnimated = document.getElementById('drawing-animated');
+    drawingAnimated = inputDrawingAnimated.checked;
+    inputDrawingAnimated.addEventListener('change',function()
+    {
+        drawingAnimated = inputDrawingAnimated.checked;
+        initializeGenerator();
+    });
 
-function setDrawingStyle(trigger)
-{
-    drawingStyle = trigger.value;
-    initializeGenerator();
-}
+    let checkedInputDirectionsAmount = document.querySelector("input[name='directions-amount']:checked");
+    directionsAmount = Number(checkedInputDirectionsAmount.value);
+    let inputDirectionsAmount = document.getElementsByName('directions-amount');
+    for(let i = 0; i < inputDirectionsAmount.length; i++)
+    {
+        inputDirectionsAmount[i].addEventListener('change',function()
+        {
+            directionsAmount = Number(inputDirectionsAmount[i].value);
+            initializeGenerator();
+        });
+    }
 
-function setDrawAnimate(trigger)
-{
-    drawingAnimated = trigger.checked;
-    console.log(drawingAnimated);
-    initializeGenerator();
-}
+    let inputDiagonalOnly = document.getElementById('diagonal-only');
+    diagonalOnly = inputDiagonalOnly.checked;
+    inputDiagonalOnly.addEventListener('change',function()
+    {
+        diagonalOnly = inputDiagonalOnly.checked;
+        initializeGenerator();
+    });
 
-function setWalkerAmount(trigger)
-{
-    walkerAmount = Number(trigger.value);
-    initializeGenerator();
-}
+    let inputWalkerAmount = document.getElementById('walker-amount')
+    walkerAmount = Number(inputWalkerAmount.value);
+    inputWalkerAmount.addEventListener('change',function()
+    {
+        walkerAmount = Number(inputWalkerAmount.value);
+        initializeGenerator();
+    });
 
-function setCellSize(trigger)
-{
-    cellSize = Number(trigger.value);
-    initializeGenerator();
-}
+    let inputHue = document.getElementById('hue');
+    hue = Number(inputHue.value);
+    inputHue.addEventListener('change',function()
+    {
+        hue = Number(inputHue.value);
+        initializeGenerator();
+    });
 
-function setCellSizeRandomize(trigger)
-{
-    cellSizeRandomize = trigger.checked;
-    initializeGenerator();
-}
+    let inputHueRandomize = document.getElementById('hue-randomize');
+    hueRandomize = inputHueRandomize.checked;
+    inputHueRandomize.addEventListener('change',function()
+    {
+        hueRandomize = inputHueRandomize.checked;
+        initializeGenerator();
+    });
 
-function setHue(trigger)
-{
-    hue = trigger.value;
-    initializeGenerator();
-}
+    let inputSaturation = document.getElementById('saturation');
+    saturation = Number(inputSaturation.value);
+    inputSaturation.addEventListener('change',function()
+    {
+        saturation = Number(inputSaturation.value);
+        initializeGenerator();
+    });
 
-function setHueRandomize(trigger)
-{
-    hueRandomize = trigger.checked;
-    initializeGenerator();
-}
+    let inputSaturationRandomize = document.getElementById('saturation-randomize');
+    saturationRandomize = inputSaturationRandomize.checked;
+    inputSaturationRandomize.addEventListener('change',function()
+    {
+        saturationRandomize = inputSaturationRandomize.checked;
+        initializeGenerator();
+    });
 
-function setSaturation(trigger)
-{   
-    saturation = trigger.value;
-    initializeGenerator();
-}
+    let inputBrightness = document.getElementById('brightness');
+    brightness = Number(inputBrightness.value);
+    inputBrightness.addEventListener('change',function()
+    {
+        brightness = Number(inputBrightness.value);
+        initializeGenerator();
+    });
 
-function setSaturationRandomize(trigger)
-{
-    saturationRandomize = trigger.checked;
-    initializeGenerator();
-}
+    let inputBrightnessRandomize = document.getElementById('brightness-randomize');
+    brightnessRandomize = inputBrightnessRandomize.checked;
+    inputBrightnessRandomize.addEventListener('change',function()
+    {
+        brightnessRandomize = inputBrightnessRandomize.checked;
+        initializeGenerator();
+    });
 
-function setBrightness(trigger)
-{
-    brightness = trigger.value;
-    initializeGenerator();
-}
-
-function setBrightnessRandomize(trigger)
-{
-    brightnessRandomize = trigger.checked;
-    initializeGenerator();
-}
-
-function setSteps(trigger)
-{
-    stepsMultiplier = Number(trigger.value) *10;
-    initializeGenerator();
+    let inputStepsRange = document.getElementById('steps');
+    stepsRange = Number(inputStepsRange.value);
+    inputStepsRange.addEventListener('change',function()
+    {
+        stepsRange = Number(inputStepsRange.value);
+        initializeGenerator();
+    });
 }

@@ -37,6 +37,8 @@ var Metro = {
 
         //Set Origin Coordinates for path
         let goal = new Array(2);
+        console.log('p '+p.path.length);
+        console.log('s '+steps);
         p.path[0][0] = p.boundsMaxX / 2;
         p.path[0][1] = p.boundsMaxY / 2;
 
@@ -54,7 +56,6 @@ var Metro = {
     * Draw Metro fully without Animation 
     * @param {Object} pathObject - The path to draw. 
     * @param {Int} pathIndex - The index of the path to draw.
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
     drawStatic: function(pathObject,pathIndex)
@@ -76,7 +77,6 @@ var Metro = {
     * Draw Metro Animated (loop)
     * @param {Object} pathObject - The path to draw. 
     * @param {Int} pathIndex - The index of the path to draw.
-    * (Should be any of these formats: 255 , '#FF0000' , 'red' , 'hsl(0, 100%, 50%)' , 'rgb(255, 0, 0)' )
     */   
     //Call this function in 'sketch.js > draw()'
     drawAnimate: function(pathObject,pathIndex) 
