@@ -8,7 +8,7 @@ The scripts in the 'drawing-scripts' folder are examples of how one can use the 
 
 The user interface is based of a seperate project I made, [Responsive Template Canvas UI](https://github.com/RanDByyp/Responsive-Template-Canvas-UI).
 
-My purpose for making this project was to get familiar with the p5.js library and used it to test my 'Responsive Template Canvas UI'.
+My purpose for making this project was to get familiar with the p5.js library and I used it to test my 'Responsive Template Canvas UI'.
 
 # Contents
 * **HTML**
